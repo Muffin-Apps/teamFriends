@@ -13,10 +13,15 @@ angular.module('teamFriends', ['ionic', 'ui.router'])
     .state('login', {
       url: "/login",
       templateUrl: "views/login.html"
-    }); 
+    })
+    .state('assistance', {
+      url: "/assistance",
+      templateUrl: "views/assistance.html",
+      controller: "assistanceCtrl"
+    });
 
-  $urlRouterProvider.otherwise("/login");
-    
+  $urlRouterProvider.otherwise("/assistance");
+
 })
 
 .run(function($ionicPlatform) {

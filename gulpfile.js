@@ -3,6 +3,7 @@ var gutil = require('gulp-util');
 var bower = require('bower');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
+var inject = require('gulp-inject');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
@@ -12,7 +13,8 @@ var stylus = require('gulp-stylus');
 var paths = {
   sass: ['./scss/**/*.scss'],
   stylus: ['./scss/**/*.styl'],
-  jade: ['./www/jade/**/*.jade']
+  jade: ['./www/jade/**/*.jade'],
+  js : ['./www/js/*.js', './www/js/**/*.js']
 };
 
 gulp.task('default', ['sass', 'stylus', 'jade']);
@@ -49,6 +51,15 @@ gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   // gulp.watch(paths.stylus, ['stylus']);
   gulp.watch(paths.jade, ['jade']);
+  gulp.watch(paths.js, ['index']);
+});
+
+
+
+gulp.task('index', function() {
+  return gulp.src('./www/index.html')
+    .pipe(inject(gulp.src(paths.js, { read : false}), {relative : true}))
+    .pipe(gulp.dest('./www'))
 });
 
 gulp.task('install', ['git-check'], function() {
