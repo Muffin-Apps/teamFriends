@@ -1,8 +1,54 @@
+$time-animation: 0.5s
+
 .matching
   .card
-    width: 50%
+    width: 60%
     position: relative
-    left: 25%
-    margin: 5px 0px
+    left: 50%
+    transform: translateX(-50%)
+    margin: 10px 0px
     .item
-      background: red
+      background: transparent
+      font-size: 15px
+      font-weight: bold
+      padding: 5px
+      .image
+        display: inline
+        float: left
+        background: url("http://jsequeiros.com/sites/default/files/imagen-cachorro-comprimir.jpg?1399003306")
+        background-repeat: no-repeat
+        background-position: 50%
+        -border: 3px solid white
+        border-radius: 50%
+        width: 50px
+        height: 50px
+        background-size: cover
+        margin-right: 10px
+      .name
+        overflow:hidden
+        text-overflow: ellipsis
+        margin-top: 15px
+        padding-right: 2px
+    .fit-text
+      color: white
+      text-overflow: initial !important
+
+.animation-left
+  animation: to-left $time-animation ease-out forwards
+.animation-center
+  animation: to-center $time-animation ease-out  forwards
+.animation-right
+  animation: to-right $time-animation ease-out  forwards
+@keyframes to-left
+  100%
+    left: 27%
+    width: 45%
+    background: #64BA6A
+@keyframes to-center
+  100%
+    left: 50%
+@keyframes to-right
+  100%
+    left: 73%
+    width: 45%
+    background: #292929

@@ -6,25 +6,34 @@ angular.module('teamFriends')
   $scope.direction = 0;
   $scope.users = [
     {
-      name: "Pepe"
+      name: "Alberto",
+      lastName: "Casares",
+      nickName: "IL pota"
     },
     {
-      name: "Juan"
+      name: "Alvaro",
+      lastName: "Fernandez",
+      nickName: "Payano"
+    },
+    {
+      name: "Jahiel",
+      lastName: "Jeronimo",
+      nickName: "Jero"
     }
   ]
   $scope.activeCard = function(obj){
-    console.log(obj);
+    console.log("Se pulsa el objeto");
   }
 
   $scope.detectMouse = function(event, obj){
-    if(lastTransitionX==-1)
-      $scope.direction = 0
+    console.log("Se mueve el objeto "+event.x);
+  }
 
-    if(lastTransitionX<= event.x){
-      $scope.direction = -1;
-    }else{
-      $scope.direction = 1;
+  $scope.updatePosition = function (obj, direction) {
+    if(!obj.moved){
+      obj.position = direction;
+      obj.moved = true;
     }
-    console.log(obj.active)
+    // user.position=1; user.moved=true
   }
 }]);

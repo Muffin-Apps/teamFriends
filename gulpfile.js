@@ -4,6 +4,7 @@ var bower = require('bower');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var inject = require('gulp-inject');
+var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
@@ -24,6 +25,7 @@ gulp.task('sass', function(done) {
     .pipe(sass({
       errLogToConsole: true
     }))
+    .pipe(autoprefixer({ browsers: ['> 5%'] }))
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0

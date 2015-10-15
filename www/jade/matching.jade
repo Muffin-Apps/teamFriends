@@ -1,5 +1,15 @@
-.matching
-  .card(ng-repeat="user in users" ng-mousemove="detectMouse($event, this)" ng-mouseup="this.active=false" ng-mousedown="this.active=true")
-    .item.item-text-wrap 
-      {{user.name}}
-    
+ion-view
+  ion-content.matching
+    //- .bar.bar-header.bar-light
+    //-   .title Selección de equipo
+    //- ion-content
+    .list
+      .item.item-divider Defensas
+      .item
+        .card(ng-repeat="user in users" ng-swipe-left="updatePosition(this, 0)" ng-swipe-right="updatePosition(this, 1)"
+              ng-class="{'animation-left': this.position==0, 'animation-right': this.position==1}")
+          .item
+            .image(src="http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png")
+            .name(ng-class="{'fit-text': this.position==0 || this.position==1}"){{user.name}} 
+              span(ng-if="this.position==undefined") {{user.lastName}}
+      .item.item-divider Medios
