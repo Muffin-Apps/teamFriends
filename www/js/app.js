@@ -18,9 +18,14 @@ angular.module('teamFriends', ['ionic', 'ui.router'])
       url: "/assistance",
       templateUrl: "views/assistance.html",
       controller: "assistanceCtrl"
+    })
+    .state('matching', {
+      url: "/matching",
+      templateUrl: "views/matching.html",
+      controller: "matchingCtrl"
     });
 
-  $urlRouterProvider.otherwise("/assistance");
+  $urlRouterProvider.otherwise("/matching");
 
 })
 

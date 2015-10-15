@@ -11,7 +11,7 @@ var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
 
 var paths = {
-  sass: ['./scss/**/*.scss'],
+  sass: ['./scss/**/*.scss', './scss/**/*.sass'],
   stylus: ['./scss/**/*.styl'],
   jade: ['./www/jade/**/*.jade'],
   js : ['./www/js/*.js', './www/js/**/*.js']

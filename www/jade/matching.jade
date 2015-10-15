@@ -1,0 +1,5 @@
+.matching
+  .card(ng-repeat="user in users" ng-mousemove="detectMouse($event, this)" ng-mouseup="this.active=false" ng-mousedown="this.active=true")
+    .item.item-text-wrap 
+      {{user.name}}
+    

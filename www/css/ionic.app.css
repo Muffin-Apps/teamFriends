@@ -7702,3 +7702,11 @@ a.button {
 
 .my-color-red {
   color: red !important; }
+
+.matching .card {
+  width: 50%;
+  position: relative;
+  left: 25%;
+  margin: 5px 0px; }
+  .matching .card .item {
+    background: red; }
