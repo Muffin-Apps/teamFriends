@@ -1,0 +1,8 @@
+.left-side
+.right-side
+.card(ng-repeat="user in defenses" ng-swipe-left="updatePosition(this, 0)" ng-swipe-right="updatePosition(this, 1)"
+      ng-class="{'animation-left': this.position==0, 'animation-right': this.position==1}")
+  .item
+    .image(src="user.image")
+    .name(ng-class="{'fit-text': this.position==0 || this.position==1}"){{user.name}} 
+      span(ng-if="this.position==undefined") {{user.lastName}}

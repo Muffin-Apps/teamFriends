@@ -7515,38 +7515,109 @@ a.button {
 ion-content {
   -margin-top: 43px !important; }
 
-.matching .card {
-  width: 60%;
+.bar-positive {
+  background-color: #6DA2FF !important;
+  -background-color: #F35E5E !important; }
+
+.matching .bar-header {
+  margin-top: 43px;
   position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  margin: 10px 0px; }
-  .matching .card .item {
-    background: transparent;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 5px; }
-    .matching .card .item .image {
-      display: inline;
-      float: left;
-      background: url("http://jsequeiros.com/sites/default/files/imagen-cachorro-comprimir.jpg?1399003306");
-      background-repeat: no-repeat;
-      background-position: 50%;
-      -border: 3px solid white;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      background-size: cover;
-      margin-right: 10px; }
-    .matching .card .item .name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-top: 15px;
-      padding-right: 2px; }
-  .matching .card .fit-text {
-    color: white;
-    text-overflow: initial !important; }
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  border-bottom: 1px solid #BBBBBB;
+  box-shadow: 0px -1px 15px 0px rgba(0, 0, 0, 0.75); }
+  .matching .bar-header img {
+    margin-top: 14px;
+    margin-right: 8px;
+    height: 15px;
+    display: inline; }
+  .matching .bar-header p {
+    display: inline; }
+  .matching .bar-header .left-team {
+    margin-left: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 49.8%;
+    color: #64BA6A;
+    border-right: 1px solid #BBBBBB;
+    background: url("/img/lines-g.png");
+    background-repeat: no-repeat;
+    -background: #64BA6A; }
+  .matching .bar-header .right-team {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    color: black;
+    background: url("/img/lines.png");
+    background-repeat: no-repeat;
+    -background: black; }
+.matching ion-content {
+  margin-top: 41px; }
+  .matching ion-content .item-divider {
+    -background: #545151;
+    background: #3C3C3C;
+    color: white; }
+  .matching ion-content .item-shadow {
+    width: 110%;
+    position: relative;
+    left: -14px;
+    box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+    background-color: #e6e6e6; }
+    .matching ion-content .item-shadow .left-side {
+      position: absolute;
+      background-color: transparent;
+      -background-color: #34E234;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 50%;
+      opacity: 0.4;
+      border-right: 1px dashed black; }
+    .matching ion-content .item-shadow .right-side {
+      position: absolute;
+      background-color: transparent;
+      top: 0;
+      left: 50%;
+      bottom: 0;
+      right: 0;
+      opacity: 0.4; }
+  .matching ion-content .card {
+    width: 60%;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    margin: 10px 0px; }
+    .matching ion-content .card .item {
+      background: transparent;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 5px; }
+      .matching ion-content .card .item .image {
+        display: inline;
+        float: left;
+        background: url("http://jsequeiros.com/sites/default/files/imagen-cachorro-comprimir.jpg?1399003306");
+        background-repeat: no-repeat;
+        background-position: 50%;
+        -border: 3px solid white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+        margin-right: 10px; }
+      .matching ion-content .card .item .name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 15px;
+        padding-right: 2px; }
+    .matching ion-content .card .fit-text {
+      color: white;
+      text-overflow: initial !important; }
 
 .animation-left {
   -webkit-animation: to-left 0.5s ease-out forwards;

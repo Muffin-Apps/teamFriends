@@ -12,20 +12,20 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch'])
   $stateProvider
     .state('login', {
       url: "/login",
-      templateUrl: "views/login.html"
+      templateUrl: "views/views/login.html"
     })
     .state('home', {
       url: "/home",
-      templateUrl: "views/home.html"
+      templateUrl: "views/views/home.html"
     })
     .state('assistance', {
       url: "/assistance",
-      templateUrl: "views/assistance.html",
+      templateUrl: "views/views/assistance.html",
       controller: "assistanceCtrl"
     })
     .state('matching', {
       url: "/matching",
-      templateUrl: "views/matching.html",
+      templateUrl: "views/views/matching.html",
       controller: "matchingCtrl"
     });
 
