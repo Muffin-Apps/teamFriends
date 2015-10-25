@@ -18,7 +18,8 @@ angular.module('teamFriends', ['ionic', 'ui.router'])
       url: "/assistance",
       templateUrl: "views/assistance.html",
       controller: "assistanceCtrl"
-    });
+    }
+  );
 
   $urlRouterProvider.otherwise("/assistance");
 
