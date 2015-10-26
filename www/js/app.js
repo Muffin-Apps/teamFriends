@@ -27,9 +27,14 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch'])
       url: "/matching",
       templateUrl: "views/views/matching.html",
       controller: "matchingCtrl"
-    });
+    })
+    .state('socket', {
+      url: "/socket",
+      templateUrl: "views/views/socket.html",
+      controller: "socketCtrl"
+    })
 
-  $urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise("/socket");
 
 })
 

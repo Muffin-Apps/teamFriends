@@ -1,5 +1,5 @@
 angular.module('teamFriends')
-.controller('matchingCtrl', ['$scope', function($scope) {
+.controller('matchingCtrl', ['$scope', 'User', function($scope, User) {
   // local
   var lastTransitionX = -1;
   // scope
