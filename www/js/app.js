@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch'])
+angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -24,7 +24,7 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch'])
       controller: "assistanceCtrl"
     })
     .state('matching', {
-      url: "/matching",
+      url: "/matching:myId?myTeam",
       templateUrl: "views/views/matching.html",
       controller: "matchingCtrl"
     })
@@ -33,6 +33,11 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch'])
       templateUrl: "views/views/socket.html",
       controller: "socketCtrl"
     })
+    .state('teams', {
+      url: '/teams',
+      templateUrl: 'views/views/teams.html',
+      controller: 'teamsCtrl'
+    });
 
   $urlRouterProvider.otherwise("/socket");
 

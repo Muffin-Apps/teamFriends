@@ -8,12 +8,15 @@
     <link href="css/ionic.app.min.css" rel="stylesheet">
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/angular-spinkit/build/angular-spinkit.min.css">
 
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-touch/angular-touch.js"></script>
     <script type="text/javascript" src="vendor/socket.io.js"></script>
+    <script src="lib/angular-spinkit/build/angular-spinkit.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -24,13 +27,14 @@
     <script src="js/controllers/assistance.js"></script>
     <script src="js/controllers/matching.js"></script>
     <script src="js/controllers/socket.js"></script>
+    <script src="js/controllers/teams.js"></script>
     <script src="js/factories/user.js"></script>
     <!-- endinject -->
   </head>
   <body ng-app="teamFriends">
 
     <ion-side-menus enable-menu-with-back-views="false">
-      <ion-side-menu-content>
+      <ion-side-menu-content drag-content="false">
         <ion-nav-bar class="bar-positive">
           <ion-nav-back-button></ion-nav-back-button>
           <ion-nav-buttons side="left">

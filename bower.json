@@ -8,6 +8,8 @@
   "dependencies": {
     "angular-dragdrop": "~1.0.12",
     "angular-touch": "~1.4.7",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "ngCordova": "~0.1.20-alpha",
+    "angular-spinkit": "~0.3.3"
   }
 }

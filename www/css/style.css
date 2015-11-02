@@ -1,1 +1,45 @@
 /* Empty. Add your own CSS if you like */
+.pr-dialog{
+  width: 100%;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.panel-dialog{
+  width: 160px;
+  height: 90px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 5px;
+}
+
+.panel-dialog p{
+  width: 100%;
+  position: relative;
+  top: 35px;
+  text-align: center;
+  color: #3A3737;
+}
+
+circle-spinner{
+}
+
+.spinning-dots-spinner{
+  margin: 0px !important;
+  position: relative;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+}
+
+.popup-body{
+  text-align: center;
+  color: #3A3737;
+}
