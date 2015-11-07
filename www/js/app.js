@@ -22,10 +22,6 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
       url: "/assistance",
       templateUrl: "views/views/assistance.html",
       controller: "assistanceCtrl"
-<<<<<<< HEAD
-    }
-  );
-=======
     })
     .state('matching', {
       url: "/matching:myId?myTeam",
@@ -42,9 +38,8 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
       templateUrl: 'views/views/teams.html',
       controller: 'teamsCtrl'
     });
->>>>>>> matching
 
-  $urlRouterProvider.otherwise("/socket");
+  $urlRouterProvider.otherwise("/assistance");
 
 })
 

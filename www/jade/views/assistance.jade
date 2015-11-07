@@ -1,29 +1,31 @@
-ion-tabs.tabs-top.tabs-balanced
-      // Asistencias Tab
-      ion-tab(title='Asistencias')
-        ion-view(view-title='assist')
-          ion-content
-            ion-list
-              ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
-                img(src="{{user.photo}}")
-                h2 {{user.name}}
-                p {{user.nickname}}
-      // Ausencias Tab
-      ion-tab(title='Ausencias')
-        ion-view(view-title='not_assist')
-          ion-content
-            ion-list
-              ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
-                img(src="{{user.photo}}")
-                h2 {{user.name}}
-                p {{user.nickname}}
+ion-view.assistance(view-title="Asistencia")  
+  ion-content
+    ion-tabs.tabs-top.tabs-balanced
+        // Asistencias Tab
+        ion-tab(title='Asistencias')
+          ion-view(view-title='assist')
+            ion-content
+              ion-list
+                ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
+                  img(src="{{user.photo}}")
+                  h2 {{user.name}}
+                  p {{user.nickname}}
+        // Ausencias Tab
+        ion-tab(title='Ausencias')
+          ion-view(view-title='not_assist')
+            ion-content
+              ion-list
+                ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
+                  img(src="{{user.photo}}")
+                  h2 {{user.name}}
+                  p {{user.nickname}}
 
-      // No confirmados Tab
-      ion-tab(title='No confirmados')
-        ion-view(view-title='not_confirmed')
-          ion-content
-            ion-list
-              ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
-                img(src="{{user.photo}}")
-                h2 {{user.name}}
-                p {{user.nickname}}
+        // No confirmados Tab
+        ion-tab(title='No confirmados')
+          ion-view(view-title='not_confirmed')
+            ion-content
+              ion-list
+                ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
+                  img(src="{{user.photo}}")
+                  h2 {{user.name}}
+                  p {{user.nickname}}
