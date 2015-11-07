@@ -1,0 +1,8 @@
+.left-side
+.right-side
+.card(ng-repeat="user in group" ng-swipe-left="listener(user, 1, true)" ng-swipe-right="listener(user, 2, true)"
+      ng-class="{'animation-left': user.team==1, 'animation-right': user.team==2}")
+  .item
+    .image(src="user.image")
+    .name(ng-class="{'fit-text': user.team==1 || user.team==2}"){{user.name}} 
+      span(ng-if="this.team==undefined") {{user.lastName}}

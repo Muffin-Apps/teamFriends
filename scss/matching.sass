@@ -1,0 +1,134 @@
+$time-animation: 0.5s
+.matching
+  .bar-header
+    margin-top: 43px
+    position: relative
+    text-align: center
+    font-weight: bold
+    color: white
+    border-bottom: 1px solid #BBBBBB
+    box-shadow: 0px -1px 15px 0px rgba(0,0,0,0.75)
+    img
+      margin-top: 14px
+      margin-right: 8px
+      height: 15px
+      display: inline
+    p
+      display: inline
+    .left-team
+      margin-left: 1px
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 49.8%
+      color: #64BA6A
+      border-right: 1px solid #BBBBBB
+      background: url("/img/lines-g.png")
+      background-repeat: no-repeat
+      -background: #64BA6A
+    .right-team
+      position: absolute
+      top: 0
+      left: 50%
+      bottom: 0
+      right: 0
+      color: black
+      background: url("/img/lines.png")
+      background-repeat: no-repeat
+      -background: black
+  ion-content
+    margin-top: 41px
+    .pr-dialog
+      width: 100%
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background: rgba(0, 0, 0, 0.5)
+      .panel-dialog
+        width: 30% 
+        position: absolute
+        left: 50%
+        transform: translate(-50%, -50%)
+        background: white
+    .item-divider
+      -background: #545151
+      background: #3C3C3C
+      color: white
+    .item-shadow
+      width: 110%
+      position: relative
+      left: -14px
+      box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,0.75)
+      background-color: rgb(230,230,230)
+      .left-side
+        position: absolute
+        background-color: transparent
+        -background-color: #34E234
+        top: 0
+        left: 0
+        bottom: 0
+        right: 50%
+        opacity: 0.4
+        border-right: 1px dashed black
+      .right-side
+        position: absolute
+        background-color: transparent
+        top: 0
+        left: 50%
+        bottom: 0
+        right: 0
+        opacity: 0.4
+    .card
+      width: 60%
+      position: relative
+      left: 50%
+      transform: translateX(-50%)
+      margin: 10px 0px
+      .item
+        background: transparent
+        font-size: 15px
+        font-weight: bold
+        padding: 5px
+        .image
+          display: inline
+          float: left
+          background: url("http://jsequeiros.com/sites/default/files/imagen-cachorro-comprimir.jpg?1399003306")
+          background-repeat: no-repeat
+          background-position: 50%
+          -border: 3px solid white
+          border-radius: 50%
+          width: 50px
+          height: 50px
+          background-size: cover
+          margin-right: 10px
+        .name
+          overflow:hidden
+          text-overflow: ellipsis
+          margin-top: 15px
+          padding-right: 2px
+      .fit-text
+        color: white
+        text-overflow: initial !important
+
+.animation-left
+  animation: to-left $time-animation ease-out forwards
+.animation-center
+  animation: to-center $time-animation ease-out  forwards
+.animation-right
+  animation: to-right $time-animation ease-out  forwards
+@keyframes to-left
+  100%
+    left: 27%
+    width: 45%
+    background: #64BA6A
+@keyframes to-center
+  100%
+    left: 50%
+@keyframes to-right
+  100%
+    left: 73%
+    width: 45%
+    background: #292929
