@@ -21,7 +21,7 @@ var paths = {
 gulp.task('default', ['sass', 'stylus', 'jade']);
 
 gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+  return gulp.src('./scss/ionic.app.scss')
     .pipe(sass({
       errLogToConsole: true
     }))
@@ -31,22 +31,19 @@ gulp.task('sass', function(done) {
       keepSpecialComments: 0
     }))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
+    .pipe(gulp.dest('./www/css/'));
 });
 
 gulp.task('stylus', function (done) {
-  gulp.src(paths.stylus)
+  return gulp.src(paths.stylus)
     .pipe(stylus())
-    .pipe(gulp.dest('./www/'))
-    .on('end', done);
+    .pipe(gulp.dest('./www/'));
 });
 
 gulp.task('jade', function (done) {
-  gulp.src(paths.jade)
+  return gulp.src(paths.jade)
     .pipe(jade())
-    .pipe(gulp.dest('./www/views/'))
-    .on('end', done);
+    .pipe(gulp.dest('./www/views/'));
 });
 
 gulp.task('watch', function() {

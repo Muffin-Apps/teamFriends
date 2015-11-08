@@ -1,31 +1,32 @@
 ion-view.assistance(view-title="Asistencia")  
-  ion-content
-    ion-tabs.tabs-top.tabs-balanced
-        // Asistencias Tab
-        ion-tab(title='Asistencias')
-          ion-view(view-title='assist')
-            ion-content
-              ion-list
-                ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
-                  img(src="{{user.photo}}")
-                  h2 {{user.name}}
-                  p {{user.nickname}}
-        // Ausencias Tab
-        ion-tab(title='Ausencias')
-          ion-view(view-title='not_assist')
-            ion-content
-              ion-list
-                ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
-                  img(src="{{user.photo}}")
-                  h2 {{user.name}}
-                  p {{user.nickname}}
-
-        // No confirmados Tab
-        ion-tab(title='No confirmados')
-          ion-view(view-title='not_confirmed')
-            ion-content
-              ion-list
-                ion-item.item-avatar.item-icon-right(ng-repeat="user in data")
-                  img(src="{{user.photo}}")
-                  h2 {{user.name}}
-                  p {{user.nickname}}
+  ion-tabs.tabs-top.tabs-balanced
+      // Asistencias Tab
+      ion-tab(title='Asistencias')
+        ion-view(view-title='assist')
+          ion-content
+            ion-list
+              ion-item.item-avatar.item-icon-right(ng-repeat="user in assist")
+                img(src="{{user.photo}}")
+                h2 {{user.firstName}}
+                p {{user.nickName}}
+              p.text-empty(ng-if="assist.length==0") No hay asistentes para este partido
+      // Ausencias Tab
+      ion-tab(title='Ausencias')
+        ion-view(view-title='not_assist')
+          ion-content
+            ion-list
+              ion-item.item-avatar.item-icon-right(ng-repeat="user in notAssisting")
+                img(src="{{user.photo}}")
+                h2 {{user.firstName}}
+                p {{user.nickName}}
+              p.text-empty(ng-if="notAssisting.length==0") No hay ausencias para este partido
+      // No confirmados Tab
+      ion-tab(title='No confirmados')
+        ion-view(view-title='not_confirmed')
+          ion-content
+            ion-list
+              ion-item.item-avatar.item-icon-right(ng-repeat="user in unknown")
+                img(src="{{user.photo}}")
+                h2 {{user.firstName}}
+                p {{user.nickName}}
+              p.text-empty(ng-if="unknown.length==0") Todos han respondido
