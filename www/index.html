@@ -27,9 +27,11 @@
     <!-- inject:js -->
     <script src="js/app.js"></script>
     <script src="js/controllers/assistance.js"></script>
+    <script src="js/controllers/login.js"></script>
     <script src="js/controllers/matching.js"></script>
     <script src="js/controllers/socket.js"></script>
     <script src="js/controllers/teams.js"></script>
+    <script src="js/factories/match.js"></script>
     <script src="js/factories/user.js"></script>
     <script src="js/services/api.js"></script>
     <!-- endinject -->
@@ -41,8 +43,11 @@
         <ion-nav-bar class="bar-positive">
           <ion-nav-back-button></ion-nav-back-button>
           <ion-nav-buttons side="left">
-            <button menu-toggle="left" class="button button-icon button-clear ion-navicon"></button>
+            <button ng-show="$state.current.name!='login'" menu-toggle="left" class="button button-icon button-clear ion-navicon"></button>
           </ion-nav-buttons>
+          <ion-nav-title>
+            Team Friends
+          </ion-nav-title>
         </ion-nav-bar>
         <ion-nav-view id="main"></ion-nav-view>
       </ion-side-menu-content>

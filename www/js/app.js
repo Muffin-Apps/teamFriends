@@ -12,7 +12,8 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
   $stateProvider
     .state('login', {
       url: "/login",
-      templateUrl: "views/views/login.html"
+      templateUrl: "views/views/login.html",
+      controller: "loginCtrl"
     })
     .state('home', {
       url: "/home",
@@ -39,11 +40,13 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
       controller: 'teamsCtrl'
     });
 
-  $urlRouterProvider.otherwise("/assistance");
+  $urlRouterProvider.otherwise("/login");
 
 })
 
-.run(function($ionicPlatform, $rootScope, $ionicSideMenuDelegate, amMoment) {
+.run(function($ionicPlatform, $rootScope, $ionicSideMenuDelegate, amMoment, $state) {
+  $rootScope.$state = $state;
+  
   amMoment.changeTimezone('Europe/Madrid');
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

@@ -1,8 +1,8 @@
 angular.module('teamFriends')
-.controller('matchingCtrl', ['$scope', 'User', '$stateParams', '$ionicPopup', '$state', function($scope, User, $stateParams, $ionicPopup, $state) {
+.controller('matchingCtrl', ['$scope', 'User', '$stateParams', '$ionicPopup', '$state', 'Match',
+  function($scope, User, $stateParams, $ionicPopup, $state, Match) {
   // local
   var lastTransitionX = -1;
-  User.createUser($stateParams.myId, "Pota");
   var socket = io.connect('http://localhost:3000/io/matching');
   var infoSocket;
   var countPlayers = 0;

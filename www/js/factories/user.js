@@ -2,10 +2,12 @@ angular.module('teamFriends')
 .factory("User", function(){
   var userInterface = {
     id: -1,
-    name: '',
-    createUser: function (id, name, lastName, nickName) {
+    email: '',
+    password: '',
+    createUser: function (id, email, password) {
       this.id = id;
-      this.name = name;
+      this.email = email;
+      this.password = password;
     }
   };
   return userInterface;

@@ -1,1 +1,12 @@
-p pruebaaaaaaaaaaaaa
+ion-view.login(view-title="Team Friends")  
+  ion-content(scroll="false")  
+    .panel-login
+      form.list(name="loginForm" ng-init="setFormScope(this)")
+        img(src="img/icon.png")
+        label.item.item-input.item-floating-label
+          span.input-label E-Mail
+          input(type='email' name="email" ng-model="model.email" placeholder='E-Mail' required ng-class="{'invalid': validate && loginForm.email.$invalid}")
+        label.item.item-input.item-floating-label
+          span.input-label Contraseña
+          input(type='password' name="password" ng-model="model.password" placeholder='Contraseña' required ng-class="{'invalid': validate && loginForm.password.$invalid}")
+        button.button.button-positive.btn-login(ng-click="login()") Entrar
