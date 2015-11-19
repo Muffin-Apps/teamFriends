@@ -1,13 +1,15 @@
 angular.module('teamFriends')
 .factory("User", function(){
   var userInterface = {
-    id: -1,
-    email: '',
-    password: '',
-    createUser: function (id, email, password) {
-      this.id = id;
-      this.email = email;
-      this.password = password;
+    data: {},
+    isLogin: false,
+    login: function (data) {
+      this.data = data;
+      this.isLogin = true;
+    },
+    logout: function(){
+      this.data = {};
+      this.isLogin = false;
     }
   };
   return userInterface;

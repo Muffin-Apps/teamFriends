@@ -7536,12 +7536,14 @@ ion-content {
 
 .popup {
   border-radius: 5px !important; }
+  .popup .popup-buttons .button {
+    height: 40px;
+    min-height: 40px; }
 
 .tabs {
   background-color: #00589E !important; }
 
-.wrapper:after {
-  content: "";
+.wrapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -7549,10 +7551,9 @@ ion-content {
   bottom: 0;
   z-index: 10;
   background: rgba(0, 0, 0, 0.5);
-  pointer-events: none;
   opacity: 0.5;
-  -webkit-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out; }
+  -webkit-transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out; }
 
 .login {
   color: #585353;
@@ -7592,6 +7593,12 @@ ion-content {
   color: #3C3A3A;
   margin-left: 20px;
   margin-right: 20px; }
+.assistance .adjust-btn-footer {
+  width: 100%;
+  font-size: 100%;
+  font-weight: bold; }
+.assistance .has-tabs-top {
+  bottom: 43px; }
 
 .matching .bar-header {
   margin-top: 43px;

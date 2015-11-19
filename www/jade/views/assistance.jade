@@ -30,3 +30,6 @@ ion-view.assistance(view-title="Asistencia")
                 h2 {{user.firstName}}
                 p {{user.nickName}}
               p.text-empty(ng-if="unknown.length==0") Todos han respondido
+  .bar.bar-footer
+    button.button.button-positive.adjust-btn-footer(ng-click="confirmAssistance()" ng-if="annotedAssistance<1" ng-disabled="annotedAssistance<0") Confirmar Asistencia
+    button.button.button-positive.adjust-btn-footer(ng-click="addInvited()"  ng-if="annotedAssistance==1") Añadir invitado

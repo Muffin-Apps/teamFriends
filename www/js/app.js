@@ -44,8 +44,9 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
 
 })
 
-.run(function($ionicPlatform, $rootScope, $ionicSideMenuDelegate, amMoment, $state, $document) {
+.run(function($ionicPlatform, $rootScope, $ionicSideMenuDelegate, amMoment, $state, $document, User) {
   $rootScope.$state = $state;
+  $rootScope.goShowSidebar = false;
 
   amMoment.changeTimezone('Europe/Madrid');
   $ionicPlatform.ready(function() {
@@ -58,17 +59,40 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
       StatusBar.styleDefault();
     }
 
-    $rootScope.toggleLeft = function() {
-      console.log("side bar open/close", $ionicSideMenuDelegate)
+    // $rootScope.toggleLeft = function() {
+    //   $ionicSideMenuDelegate.toggleLeft();
+    // };
+
+    $rootScope.goLogin = function(){
+      User.logout();
+      $state.go('login')
+    }
+
+    $rootScope.closeSideBar = function(){
       $ionicSideMenuDelegate.toggleLeft();
-    };
+      $rootScope.toggleSideBar();
+    }
 
     $rootScope.toggleSideBar = function(){
-      if($document.find('body').hasClass('menu-open')){
-        $rootScope.goShowSidebar = false;
-      }else{
-        $rootScope.goShowSidebar = true;
-      }
+      $rootScope.isOpenShowSidebar = !$rootScope.isOpenShowSidebar;
     }
+
+    $rootScope.$on('$stateChangeStart',
+    function(event, toState, toParams, fromState, fromParams){
+        if($rootScope.isOpenShowSidebar)
+          $rootScope.closeSideBar();
+        if(toState.name === "login" && User.isLogin){
+          event.preventDefault();
+          if(ionic.Platform.isAndroid())
+            navigator.app.exitApp();
+        }
+
+        if(toState.name != "login" && !User.isLogin){
+          event.preventDefault();
+          $state.go('login');
+        }
+    })
   });
+
+
 })

@@ -22,5 +22,10 @@ angular.module('teamFriends')
       return $http.get(URL+'/matches/'+idMatch+'/assistance');
     }
 
+    // Assistance
+    api_public.updateAssistance = function(idMatch, idUser, assist){
+      return $http.put(URL+'/matches/'+idMatch+'/assistance/'+idUser, {status: assist});
+    }
+
     return api_public;
 }]);

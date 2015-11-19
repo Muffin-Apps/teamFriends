@@ -99,7 +99,7 @@ angular.module('teamFriends')
       obj.moved = true;
       countPlayers++;
 
-      socket.emit('player-chosen', { player: obj.id, idUser:User.id, idMatch: infoSocket.idMatch, finalize: countPlayers==limitPlayers});
+      socket.emit('player-chosen', { player: obj.id, idUser:User.data.id, idMatch: infoSocket.idMatch, finalize: countPlayers==limitPlayers});
       $scope.myTurn = false;
       showProgess = true;
     }else{
@@ -124,7 +124,7 @@ angular.module('teamFriends')
       return;
     }
     infoSocket = data;
-    if(data.idUser == User.id){
+    if(data.idUser == User.data.id){
       if(data.idPlayer){
         var group = [];
         group = group.concat($scope.goalKeepers, $scope.defenses, $scope.midfield, $scope.forward);
