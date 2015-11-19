@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="lib/angular-spinkit/build/angular-spinkit.min.css">
 
 
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha1.js"></script>
+
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-touch/angular-touch.js"></script>
@@ -39,11 +41,11 @@
   <body ng-app="teamFriends">
 
     <ion-side-menus enable-menu-with-back-views="false">
-      <ion-side-menu-content drag-content="false">
+      <ion-side-menu-content drag-content="false" ng-class="{'wrapper': goShowSidebar}">
         <ion-nav-bar class="bar-positive">
           <ion-nav-back-button></ion-nav-back-button>
           <ion-nav-buttons side="left">
-            <button ng-show="$state.current.name!='login'" menu-toggle="left" class="button button-icon button-clear ion-navicon"></button>
+            <button ng-show="$state.current.name!='login'" menu-toggle="left" ng-click="toggleSideBar()" class="button button-icon button-clear ion-navicon"></button>
           </ion-nav-buttons>
           <ion-nav-title>
             Team Friends

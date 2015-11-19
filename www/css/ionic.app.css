@@ -7531,8 +7531,28 @@ ion-content {
   -margin-top: 43px !important; }
 
 .bar-positive {
-  background-color: #6DA2FF !important;
+  background-color: #00589E !important;
   -background-color: #F35E5E !important; }
+
+.popup {
+  border-radius: 5px !important; }
+
+.tabs {
+  background-color: #00589E !important; }
+
+.wrapper:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0.5;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out; }
 
 .login {
   color: #585353;

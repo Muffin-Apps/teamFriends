@@ -1,5 +1,5 @@
 angular.module('teamFriends')
-.controller('loginCtrl', ['$scope', 'Api', 'User', 'Match', '$state', function($scope, Api, User, Match, $state) {
+.controller('loginCtrl', ['$scope', 'Api', 'User', 'Match', '$state', '$ionicPopup', function($scope, Api, User, Match, $state, $ionicPopup) {
   $scope.model = {
     email: '',
     password: ''
@@ -16,13 +16,19 @@ angular.module('teamFriends')
   $scope.login = function(){
     $scope.validate = true
     if(this.loginForm && this.loginForm.$valid){
-      Api.user.login($scope.model.email, $scope.model.password).then(function(user){
-        User.createUser(user.data.id, user.data.email, user.data.password);
+      var pass = CryptoJS.HmacSHA1($scope.model.password, "tokenMuffin").toString();
+      Api.user.login($scope.model.email, pass).then(function(user){
+        User.createUser(user.data.id, user.data.email, pass);
         localStorage.setItem("email", User.email);
-        localStorage.setItem("password", User.password);
+        localStorage.setItem("password", $scope.model.password);
         Api.match.getNextMatch().then(function(data){
           Match.createMatch(data.data.id, new Date(data.data.date));
           $state.go('assistance')
+        });
+      }, function(err){
+        console.log(err)
+        var alertPopup = $ionicPopup.alert({
+          title: 'Usuario incorrecto'
         });
       });
     }

@@ -44,9 +44,9 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
 
 })
 
-.run(function($ionicPlatform, $rootScope, $ionicSideMenuDelegate, amMoment, $state) {
+.run(function($ionicPlatform, $rootScope, $ionicSideMenuDelegate, amMoment, $state, $document) {
   $rootScope.$state = $state;
-  
+
   amMoment.changeTimezone('Europe/Madrid');
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -59,7 +59,16 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
     }
 
     $rootScope.toggleLeft = function() {
+      console.log("side bar open/close", $ionicSideMenuDelegate)
       $ionicSideMenuDelegate.toggleLeft();
     };
+
+    $rootScope.toggleSideBar = function(){
+      if($document.find('body').hasClass('menu-open')){
+        $rootScope.goShowSidebar = false;
+      }else{
+        $rootScope.goShowSidebar = true;
+      }
+    }
   });
 })
