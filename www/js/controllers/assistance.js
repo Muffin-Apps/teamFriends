@@ -34,7 +34,7 @@ angular.module('teamFriends')
     })
   };
 
-  Api.getAssistans(1).then(function(data){
+  Api.getAssistans(Match.id).then(function(data){
     $scope.assist = data.data.assisting;
     $scope.notAssisting = data.data.notAssisting;
     $scope.unknown = data.data.unknown;

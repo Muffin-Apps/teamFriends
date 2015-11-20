@@ -1,98 +1,87 @@
 angular.module('teamFriends')
-.controller('matchingCtrl', ['$scope', 'User', '$stateParams', '$ionicPopup', '$state', 'Match',
-  function($scope, User, $stateParams, $ionicPopup, $state, Match) {
+.controller('matchingCtrl', ['$scope', '$rootScope', 'User', '$stateParams', '$ionicPopup', '$state', 'Match', 'Api',
+  function($scope, $rootScope, User, $stateParams, $ionicPopup, $state, Match, Api) {
   // local
   var lastTransitionX = -1;
-  var socket = io.connect('http://localhost:3000/io/matching');
+  // var socket = io.connect('http://localhost:3000/io/matching');
   var infoSocket;
   var countPlayers = 0;
   var limitPlayers;
   // scope
   $scope.myTurn = false;
-  $scope.myTeam = $stateParams.myTeam;
+  // $scope.myTeam = $stateParams.myTeam;
+  $scope.goalKeepers = [];
+  $scope.defenses = [];
+  $scope.midfield = [];
+  $scope.forward = [];
 
-  $scope.goalKeepers = [
-    {
-      id: 9,
-      name: "Ruben",
-      lastName: "Ruiz",
-      nickName: "Ruben",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    },
-    {
-      id: 10,
-      name: "Antonio",
-      lastName: "Lozano",
-      nickName: "Antonio",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    }
-  ]
-  $scope.defenses = [
-    {
-      id: 1,
-      name: "Rafa",
-      lastName: "Peso",
-      nickName: "Rafa",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    },
-    {
-      id: 2,
-      name: "Alvaro",
-      lastName: "Fernandez",
-      nickName: "Payano",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    },
-    {
-      id: 3,
-      name: "Alberto",
-      lastName: "Casares",
-      nickName: "IL pota",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    }
-  ]
-  $scope.midfield = [
-    {
-      id: 4,
-      name: "Manuel",
-      lastName: "Fernandez",
-      nickName: "Manolo canón",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    },
-    {
-      id: 5,
-      name: "Manuel",
-      lastName: "Esteban",
-      nickName: "Cuco",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    },
-    {
-      id: 6,
-      name: "Jahiel",
-      lastName: "Jeronimo",
-      nickName: "Jero",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    }
-  ]
-  $scope.forward = [
-    {
-      id: 7,
-      name: "Paco",
-      lastName: "Ruiz",
-      nickName: "Paco",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    },
-    {
-      id: 8,
-      name: "Rafa",
-      lastName: "Porcel",
-      nickName: "Karim",
-      image: "http://imagenpng.com/wp-content/uploads/2015/03/Imagenes-Mario-Bros-PNG-1.png"
-    }
-  ]
+  // Api.checkConnection().then(function(data){
+  //   if(data.data.status){
+  //     initialize();
+  //   }else{
+  //     var alertPopup = $ionicPopup.alert({
+  //      title: 'Plazo cerrado',
+  //      template: 'Lo sentimos, el periodo para elegir equipos es del Sabado 20:00 al Domingo 12:00'
+  //     });
+  //     alertPopup.then(function(res) {
+  //       $state.go($rootScope.previousState);
+  //     });
+  //   }
+  // });
 
-  // count players
-  limitPlayers = [].concat($scope.goalKeepers, $scope.defenses, $scope.midfield, $scope.forward).length;
 
+  var initialize = function(){
+    Api.getAssistans(Match.id).then(function(data){
+      var assistants = data.data.assisting;
+      for(var i=0; i<assistants.length; i++){
+        if(assistants[i].position === "gk")
+          $scope.goalKeepers.push(assistants[i].splice(i, 1));
+      }
+      for(var i=0; i<assistants.length; i++){
+        if(assistants[i].position === "df")
+          $scope.defenses.push(assistants[i].splice(i, 1));
+      }
+      for(var i=0; i<assistants.length; i++){
+        if(assistants[i].position === "md")
+          $scope.midfield.push(assistants[i].splice(i, 1));
+      }
+      for(var i=0; i<assistants.length; i++){
+        if(assistants[i].position === "at")
+          $scope.forward.push(assistants[i].splice(i, 1));
+      }
+      // count players
+      limitPlayers = [].concat($scope.goalKeepers, $scope.defenses, $scope.midfield, $scope.forward).length;
+
+      console.log("limit", limitPlayers)
+      //sockets
+      // socket.on('info-matching', function (data) {
+      //   console.log("Datos del socket", data, $stateParams)
+      //   if(data.exit){
+      //     $state.go('teams');
+      //     return;
+      //   }
+      //   infoSocket = data;
+      //   if(data.idUser == User.data.id){
+      //     if(data.idPlayer){
+      //       var group = [];
+      //       group = group.concat($scope.goalKeepers, $scope.defenses, $scope.midfield, $scope.forward);
+      //       for (var i = 0; i < group.length; i++) {
+      //         if(group[i].id==data.idPlayer){
+      //           group[i].team = ($scope.myTeam==1) ? 2 : 1;
+      //           group[i].moved = true;
+      //           countPlayers++;
+      //           break;
+      //         }
+      //       }
+      //     }
+      //     console.log("Comienza mi turno")
+      //     $scope.myTurn = true;
+      //     $scope.$digest();
+      //   }
+      // });
+    });
+  }
+  initialize();
   $scope.updatePosition = function (obj, direction) {
     if($scope.myTurn && !obj.moved && $scope.myTeam==direction){
       obj.team = direction;
@@ -115,33 +104,6 @@ angular.module('teamFriends')
     }
     // user.position=1; user.moved=true
   }
-
-  //sockets
-  socket.on('info-matching', function (data) {
-    console.log("Datos del socket", data, $stateParams)
-    if(data.exit){
-      $state.go('teams');
-      return;
-    }
-    infoSocket = data;
-    if(data.idUser == User.data.id){
-      if(data.idPlayer){
-        var group = [];
-        group = group.concat($scope.goalKeepers, $scope.defenses, $scope.midfield, $scope.forward);
-        for (var i = 0; i < group.length; i++) {
-          if(group[i].id==data.idPlayer){
-            group[i].team = ($scope.myTeam==1) ? 2 : 1;
-            group[i].moved = true;
-            countPlayers++;
-            break;
-          }
-        }
-      }
-      console.log("Comienza mi turno")
-      $scope.myTurn = true;
-      $scope.$digest();
-    }
-  });
 
 }])
 .directive('listCards', function() {

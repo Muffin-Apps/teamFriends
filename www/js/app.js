@@ -25,7 +25,7 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
       controller: "assistanceCtrl"
     })
     .state('matching', {
-      url: "/matching:myId?myTeam",
+      url: "/matching",
       templateUrl: "views/views/matching.html",
       controller: "matchingCtrl"
     })
@@ -68,6 +68,11 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
       $state.go('login')
     }
 
+    $rootScope.goState = function(state){
+      $rootScope.closeSideBar();
+      $state.go(state);
+    }
+
     $rootScope.closeSideBar = function(){
       $ionicSideMenuDelegate.toggleLeft();
       $rootScope.toggleSideBar();
@@ -79,6 +84,8 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
 
     $rootScope.$on('$stateChangeStart',
     function(event, toState, toParams, fromState, fromParams){
+        $rootScope.previousState = fromState.name;
+
         if($rootScope.isOpenShowSidebar)
           $rootScope.closeSideBar();
         if(toState.name === "login" && User.isLogin){

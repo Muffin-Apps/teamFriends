@@ -27,5 +27,10 @@ angular.module('teamFriends')
       return $http.put(URL+'/matches/'+idMatch+'/assistance/'+idUser, {status: assist});
     }
 
+    // Socket
+    api_public.checkConnection = function(idMatch){
+      return $http.get(URL+'/matches/'+idMatch+'/socketIsActive');
+    }
+
     return api_public;
 }]);
