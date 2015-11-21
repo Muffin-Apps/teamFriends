@@ -22,6 +22,10 @@ angular.module('teamFriends')
       return $http.get(URL+'/matches/'+idMatch+'/assistance');
     }
 
+    api_public.getTeams = function(idMatch){
+      return $http.get(URL+'/matches/'+idMatch+'/teams');
+    }
+
     // Assistance
     api_public.updateAssistance = function(idMatch, idUser, assist){
       return $http.put(URL+'/matches/'+idMatch+'/assistance/'+idUser, {status: assist});
@@ -29,7 +33,7 @@ angular.module('teamFriends')
 
     // Socket
     api_public.checkConnection = function(idMatch){
-      return $http.get(URL+'/matches/'+idMatch+'/socketIsActive');
+      return $http.get(URL+'/socket');
     }
 
     return api_public;

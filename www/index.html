@@ -42,10 +42,9 @@
 
     <ion-side-menus enable-menu-with-back-views="false">
       <ion-side-menu-content drag-content="false">
-        <ion-nav-bar class="bar-positive">
-          <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-bar class="bar-positive" align-title="center">
           <ion-nav-buttons side="left">
-            <button ng-show="$state.current.name!='login'" menu-toggle="left" ng-click="toggleSideBar()" class="button button-icon button-clear ion-navicon"></button>
+            <button ng-if="$state.current.name!='login'" menu-toggle="left" ng-click="toggleSideBar()" class="button button-icon button-clear ion-navicon"></button>
           </ion-nav-buttons>
           <ion-nav-title>
             Team Friends
@@ -60,9 +59,10 @@
         </ion-header-bar>
         <ion-content>
           <ion-list>
-            <ion-item menu-close="" ng-click="goState('assistance')" >Asistencia</ion-item>
-            <ion-item menu-close="" ng-click="goState('matching')" >Seleccionar equipos</ion-item>
-            <ion-item menu-close="" ng-click="goLogin()">Cerrar sesión</ion-item>
+            <ion-item menu-toggle="" ng-click="goState('assistance')" >Asistencia</ion-item>
+            <ion-item menu-toggle="" ng-click="goState('matching')" >Seleccionar equipos</ion-item>
+            <ion-item menu-toggle="" ng-click="goState('teams')" >Equipos</ion-item>
+            <ion-item menu-toggle="" ng-click="goLogin()">Cerrar sesión</ion-item>
           </ion-list>
         </ion-content>
       </ion-side-menu>

@@ -4,5 +4,5 @@
       ng-class="{'animation-left': user.team==1, 'animation-right': user.team==2}")
   .item
     .image(src="user.image")
-    .name(ng-class="{'fit-text': user.team==1 || user.team==2}"){{user.name}} 
+    .name(ng-class="{'fit-text': user.team==1 || user.team==2}"){{user.firstName}} 
       span(ng-if="this.team==undefined") {{user.lastName}}

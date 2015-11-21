@@ -1,4 +1,6 @@
 ion-view.matching(view-title="Equipos")
+  ion-nav-buttons(side='left')
+      button.button.button-icon.button-clear.ion-navicon(ng-show="$state.current.name!='login'", menu-toggle='left', ng-click='toggleSideBar()')
   .bar.bar-header
     .left-team
       img(src="img/icon-tshirt-g.png")

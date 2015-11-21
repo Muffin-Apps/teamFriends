@@ -1,5 +1,6 @@
 angular.module('teamFriends')
-.controller('loginCtrl', ['$scope', 'Api', 'User', 'Match', '$state', '$ionicPopup', function($scope, Api, User, Match, $state, $ionicPopup) {
+.controller('loginCtrl', ['$scope', 'Api', 'User', 'Match', '$state', '$ionicPopup',
+ function($scope, Api, User, Match, $state, $ionicPopup) {
   $scope.model = {
     email: '',
     password: ''

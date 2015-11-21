@@ -22,12 +22,14 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
     .state('assistance', {
       url: "/assistance",
       templateUrl: "views/views/assistance.html",
-      controller: "assistanceCtrl"
+      controller: "assistanceCtrl",
+      cache: false
     })
     .state('matching', {
       url: "/matching",
       templateUrl: "views/views/matching.html",
-      controller: "matchingCtrl"
+      controller: "matchingCtrl",
+      cache: false
     })
     .state('socket', {
       url: "/socket",
