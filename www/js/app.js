@@ -54,6 +54,7 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+      console.log(window.cordova)
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
@@ -64,6 +65,8 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
     // $rootScope.toggleLeft = function() {
     //   $ionicSideMenuDelegate.toggleLeft();
     // };
+
+    console.log(window.plugins)
 
     $rootScope.goLogin = function(){
       User.logout();
@@ -101,7 +104,40 @@ angular.module('teamFriends', ['ionic', 'ui.router', 'ngTouch', 'angular-spinkit
           $state.go('login');
         }
     })
+
+    var app = {
+        // Application Constructor
+        initialize: function() {
+          console.log("inicializar")
+            this.bindEvents();
+        },
+        // Bind Event Listeners
+        //
+        // Bind any events that are required on startup. Common events are:
+        // 'load', 'deviceready', 'offline', and 'online'.
+        bindEvents: function() {
+            document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+        // deviceready Event Handler
+        //
+        // The scope of 'this' is the event. In order to call the 'receivedEvent'
+        // function, we must explicitly call 'app.receivedEvent(...);'
+        onDeviceReady: function() {
+          window.parsepushnotification.setUp("9oQpIQonajhCGy93Zscfzn9xT61vfAsvR0cIh6ZI", "iW51IAW3ILByREoLnR2aODwQYKk421LS19ts6UUx");
+          console.log("push obj",window.parsepushnotification)
+          window.parsepushnotification.onRegisterAsPushNotificationClientSucceeded = function() {
+        		alert('onRegisterAsPushNotificationClientSucceeded');
+        	};
+        	// window.parsepushnotification.onRegisterAsPushNotificationClientFailed = function() {
+        	// 	alert('onRegisterAsPushNotificationClientFailed');
+        	// };
+        }
+    };
+
+    app.initialize();
   });
+
+
 
 
 })

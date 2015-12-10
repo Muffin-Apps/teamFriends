@@ -51,6 +51,12 @@
         },
         "org.pbernasconi.progressindicator": {
             "PACKAGE_NAME": "com.ionicframework.teamfriends554721"
+        },
+        "phonegap-plugin-push": {
+            "PACKAGE_NAME": "com.ionicframework.teamfriends554721"
+        },
+        "cordova-plugin-pushnotification-parsepushnotification": {
+            "PACKAGE_NAME": "com.ionicframework.teamfriends554721"
         }
     },
     "dependent_plugins": {}
